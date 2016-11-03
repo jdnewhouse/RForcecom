@@ -59,7 +59,7 @@ rforcecom.oauth <-
 
     # BEGIN DEBUG
     if(exists("rforcecom.debug") && rforcecom.debug){ message(URL) }
-    if(exists("rforcecom.debug") && rforcecom.debug){ message(res.content) }
+    if(exists("rforcecom.debug") && rforcecom.debug){ message(response) }
     # END DEBUG
 
     # Retrieve sessionID and instanceURL from response
