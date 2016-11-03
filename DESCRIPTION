@@ -48,6 +48,7 @@ Collate:
     'rforcecom.insertBulkAttachments.R'
     'rforcecom.login.R'
     'rforcecom.logout.R'
+    'rforcecom.oauth.R'
     'rforcecom.query.R'
     'rforcecom.queryMore.R'
     'rforcecom.retrieve.R'
