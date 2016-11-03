@@ -57,7 +57,8 @@ rforcecom.oauth <-
     request <- httr::POST(url = URL, body = loginparams)
     response <- httr::content(request, "parsed")
 
-    if (response$error_description == "authentication failure") stop("OAuth authentication failure.")
+    # Check for login error
+    if (exists('error_description', where = response)) stop(response$error_description)
 
     # BEGIN DEBUG
     if(exists("rforcecom.debug") && rforcecom.debug){ message(URL) }
