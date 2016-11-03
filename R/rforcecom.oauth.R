@@ -39,7 +39,7 @@
 #' @keywords connection
 #' @export
 rforcecom.oauth <-
-  function(username, password, consumerkey, consumersecret, granttype, loginURL="https://login.salesforce.com/", apiVersion="35.0"){
+  function(username, password, consumerkey, consumersecret, granttype, loginURL="https://login.salesforce.com", apiVersion="35.0"){
 
     if(as.numeric(apiVersion) < 20) stop("The earliest supported API version is 20.0")
 
@@ -56,6 +56,8 @@ rforcecom.oauth <-
     URL <- paste0(loginURL, "/services/oauth2/token")
     request <- httr::POST(url = URL, body = loginparams)
     response <- httr::content(request, "parsed")
+
+    if (response$error_description == "authentication failure") stop("OAuth authentication failure.")
 
     # BEGIN DEBUG
     if(exists("rforcecom.debug") && rforcecom.debug){ message(URL) }
